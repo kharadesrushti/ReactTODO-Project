@@ -10,14 +10,20 @@ createRoot(document.getElementById("root")!).render(
     <KindeProvider
       clientId="f93e8523974342499c0d9d3a57e60a58"
       domain="https://atodos.kinde.com"
-      redirectUri="http://localhost:5173"
-      logoutUri="http://localhost:5173"
+      redirectUri={
+        process.env.NODE_ENV === "production"
+          ? "https://react-todo-project-rouge.vercel.app"
+          : "http://localhost:5173"
+      }
+      logoutUri={
+        process.env.NODE_ENV === "production"
+          ? "https://react-todo-project-rouge.vercel.app"
+          : "http://localhost:5173"
+      }
     >
-
       <TodosContextProvider>
         <App />
       </TodosContextProvider>
-     
     </KindeProvider>
   </StrictMode>
 );
